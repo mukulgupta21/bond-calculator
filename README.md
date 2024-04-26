@@ -5,7 +5,7 @@
 [![Coverage Status](https://coveralls.io/repos/github/goldwasserexchange/bond-calculator/badge.svg?branch=master)](https://coveralls.io/github/goldwasserexchange/bond-calculator?branch=master)
 [![Greenkeeper badge](https://badges.greenkeeper.io/goldwasserexchange/bond-calculator.svg)](https://greenkeeper.io/)
 
-Yield and price calculations for bonds.
+Yield, price and accrued interest calculations for bonds.
 
 Gives the same results as Excel [YIELD](https://support.office.com/en-US/article/YIELD-function-F5F5CA43-C4BD-434F-8BD2-ED3C9727A4FE) and [PRICE](https://support.office.com/en-us/article/PRICE-function-3ea9deac-8dfa-436f-a7c8-17ea02c21b0a) functions.
 
@@ -41,4 +41,7 @@ const yld = bond.yield(98); // 2.98817753210426%
 
 // Calculate price for a given yield
 const price = bond.price(0.025); // 100.69785390232649
+
+// Calculate the accrued interest
+const accruedInterest = bond.accruedInterest(); // 1.159375
 ```

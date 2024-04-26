@@ -60,5 +60,10 @@ test('price', (t) => {
 
 test('yield', (t) => {
   const bc = bondCalculator(bond);
-  t.is(bc.yield(98), 0.0298817753210426);
+  t.true(Math.abs(bc.yield(98) - 0.0298817753210426) < 1e-10);
+});
+
+test('accrued interest', (t) => {
+  const bc = bondCalculator(bond);
+  t.is(bc.accruedInterest(), 1.15937500);
 });

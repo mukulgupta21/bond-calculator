@@ -1,6 +1,7 @@
 import Joi from 'joi';
 
 import { calcPrice, calcYield } from './bond';
+import { accruedInterest, previous } from './coupon';
 
 const schema = Joi.object().keys({
   settlement: Joi.date().max(Joi.ref('maturity')).required(),
@@ -42,6 +43,13 @@ module.exports = (bond) => {
       price,
       validBond.redemption,
       validBond.frequency,
+      validBond.convention
+    ),
+    accruedInterest: () => accruedInterest(
+      validBond.redemption,
+      validBond.rate,
+      validBond.settlement,
+      previous(validBond.settlement, validBond.maturity, validBond.frequency),
       validBond.convention
     ),
   };

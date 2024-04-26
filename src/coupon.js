@@ -75,3 +75,8 @@ export const num = (settlement, maturity, frequency) => R.compose(
   differenceInMonthsC(maturity),
   next
 )(settlement, maturity, frequency);
+
+export const accruedInterest = (faceValue, couponRate, settlement, lastCouponDate, convention) => {
+  const daysCount = accrued(lastCouponDate, settlement, convention);
+  return faceValue * couponRate * daysCount / 360;
+};

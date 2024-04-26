@@ -1,7 +1,7 @@
 import test from 'ava';
 
 import {
-  days, accrued, dates, previous, next, num,
+  days, accrued, dates, previous, next, num, accruedInterest,
 } from '../src/coupon';
 
 test('days ACTUAL/365', (t) => {
@@ -118,4 +118,8 @@ test('num exactly 1', (t) => {
 
 test('num exactly 0', (t) => {
   t.is(num(new Date(2020, 4, 20), new Date(2020, 4, 20), 1), 0);
+});
+
+test('Accrued interest', (t) => {
+  t.is(accruedInterest(100, 0.073, new Date(2024, 3, 26), new Date(2023, 11, 19), '30U/360'), 2.575277777777778);
 });
